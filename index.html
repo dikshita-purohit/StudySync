@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudySync</title>
+    <link rel="stylesheet" href="/src/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>StudySync</h1>
+            <p>Organize your studies, achieve your goals</p>
+        </header>
+
+        <nav class="nav-tabs">
+            <button class="nav-tab active" data-tab="dashboard">Dashboard</button>
+            <button class="nav-tab" data-tab="tasks">Tasks</button>
+            <button class="nav-tab" data-tab="calendar">Calendar</button>
+            <button class="nav-tab" data-tab="add-task">Add Task</button>
+        </nav>
+
+        <!-- Dashboard Tab -->
+        <div id="dashboard" class="tab-content active">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number" id="total-tasks">0</div>
+                    <div class="stat-label">Total Tasks</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="completed-tasks">0</div>
+                    <div class="stat-label">Completed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="pending-tasks">0</div>
+                    <div class="stat-label">Pending</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="overdue-tasks">0</div>
+                    <div class="stat-label">Overdue</div>
+                </div>
+            </div>
+
+            <div class="progress-section">
+                <h3>Overall Progress</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <div class="progress-text" id="progress-text">0% Complete</div>
+            </div>
+
+            <div class="upcoming-section">
+                <h3>Upcoming Tasks</h3>
+                <div id="upcoming-tasks" class="upcoming-list"></div>
+            </div>
+        </div>
+
+        <!-- Tasks Tab -->
+        <div id="tasks" class="tab-content">
+            <div class="tasks-header">
+                <h2>All Tasks</h2>
+                <div class="task-filters">
+                    <select id="subject-filter">
+                        <option value="all">All Subjects</option>
+                    </select>
+                    <select id="status-filter">
+                        <option value="all">All Status</option>
+                        <option value="pending">Pending</option>
+                        <option value="completed">Completed</option>
+                        <option value="overdue">Overdue</option>
+                    </select>
+                </div>
+            </div>
+            <div id="tasks-list" class="tasks-list"></div>
+        </div>
+
+        <!-- Calendar Tab -->
+        <div id="calendar" class="tab-content">
+            <div class="calendar-header">
+                <button id="prev-month">&lt;</button>
+                <h2 id="current-month"></h2>
+                <button id="next-month">&gt;</button>
+            </div>
+            <div id="calendar-grid" class="calendar-grid"></div>
+        </div>
+
+        <!-- Add Task Tab -->
+        <div id="add-task" class="tab-content">
+            <form id="task-form" class="task-form">
+                <h2>Add New Task</h2>
+                
+                <div class="form-group">
+                    <label for="task-name">Task Name *</label>
+                    <input type="text" id="task-name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="task-subject">Subject *</label>
+                    <select id="task-subject" required>
+                        <option value="">Select Subject</option>
+                        <option value="Mathematics">Mathematics</option>
+                        <option value="Science">Science</option>
+                        <option value="English">English</option>
+                        <option value="History">History</option>
+                        <option value="Computer Science">Computer Science</option>
+                        <option value="Physics">Physics</option>
+                        <option value="Chemistry">Chemistry</option>
+                        <option value="Biology">Biology</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="custom-subject">Custom Subject</label>
+                    <input type="text" id="custom-subject" placeholder="Enter custom subject">
+                </div>
+
+                <div class="form-group">
+                    <label for="task-date">Due Date *</label>
+                    <input type="date" id="task-date" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="task-time">Due Time</label>
+                    <input type="time" id="task-time">
+                </div>
+
+                <div class="form-group">
+                    <label for="task-duration">Estimated Duration (hours)</label>
+                    <input type="number" id="task-duration" min="0.5" max="24" step="0.5" placeholder="2.5">
+                </div>
+
+                <div class="form-group">
+                    <label for="task-priority">Priority</label>
+                    <select id="task-priority">
+                        <option value="low">Low</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="task-notes">Notes</label>
+                    <textarea id="task-notes" placeholder="Additional notes..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Add Task</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div id="notification" class="notification"></div>
+
+    <script src="/src/script.js"></script>
+</body>
+</html>
